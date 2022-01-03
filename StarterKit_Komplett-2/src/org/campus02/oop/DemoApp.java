@@ -3,9 +3,34 @@ package org.campus02.oop;
 public class DemoApp {
 
 	public static void main(String[] args) {
-		
+		PersonManager pm = new PersonManager();
+		for (int i = 0; i < 100; i++) {
+			Person testPerson = createTestPerson();
+			pm.add(testPerson);
+			// 1 Zeiler
+			// pm.add(createTestPerson());
+		}
 
+		System.out.println("-- Gender Analyzer -- ");
+		GenderAnalyzer ga = new GenderAnalyzer();
+		pm.doAnalysis(ga);
+		System.out.println(" ");
 
+		System.out.println("-- Country Analyzer -- ");
+		CountryAnalyzer ca = new CountryAnalyzer();
+		pm.doAnalysis(ca);
+		System.out.println(ca.getResult());
+		System.out.println(" ");
+
+		System.out.println("-- MaxSalaryAnalyzer Analyzer -- ");
+		pm.doAnalysis(new MaxSalaryAnalyzer());
+		System.out.println(" ");
+
+		System.out.println("-- BMIAnalyzer Analyzer -- ");
+		BMIAnalyzer bmiAnalyzer = new BMIAnalyzer();
+		pm.doAnalysis(bmiAnalyzer);
+		System.out.println(bmiAnalyzer.getResult());
+		System.out.println(" ");
 	}
 	
 	

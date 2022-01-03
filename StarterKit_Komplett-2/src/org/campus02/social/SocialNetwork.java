@@ -24,6 +24,26 @@ public class SocialNetwork {
 	
 	
 	//TODO 1: implementieren Sie hier die rekursive Methode lt. Angabe
+	public ArrayList<User> findAllFriends(User user, int level, int maxDepth) {
+		ArrayList<User> result = new ArrayList<>();
+
+		if (level > maxDepth) {
+			return result;
+		}
+
+		result.addAll(user.getFriends());
+
+		for (User friend : user.getFriends()) {
+			ArrayList<User> allFriends = findAllFriends(friend, level + 1, maxDepth);
+			for (User f : allFriends) {
+				if (!result.contains(f)) {
+					result.add(f);
+				}
+			}
+		}
+
+		return result;
+	}
 	
 	
 	
